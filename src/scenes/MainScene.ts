@@ -1,4 +1,6 @@
 import Phaser from 'phaser';
+import { FootstepTrail } from '../FootstepTrail';
+import { LineTrail } from '../LineTrail';
 
 const NUM_MARIOS = 10;
 export default class MainScene extends Phaser.Scene {
@@ -21,6 +23,8 @@ export default class MainScene extends Phaser.Scene {
       mario = this.add.image(32, 32, 'mario')
         .setData('velocity', { x: Math.random() * 500, y: Math.random() * 500 })
         .setDisplaySize(32, 32);
+
+      new LineTrail(this, mario, 10, 10, 0x0000FF, i % 2 === 0, 1000 / 24, 2000, 1);
 
       this.marios.push(mario);
     }
